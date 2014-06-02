@@ -20,6 +20,8 @@
 *.out
 *.app
 
-# C::B output
+# C::B output and files
 bin/
 obj/
+*.layout
+*.depend
