@@ -31,6 +31,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="box.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="box.h" />
+		<Unit filename="boxtest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="boxtest.h" />
+		<Unit filename="id.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="id.h" />
+		<Unit filename="idtest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="idtest.h" />
 		<Unit filename="karteczkitest.c">
 			<Option compilerVar="CC" />
 		</Unit>
