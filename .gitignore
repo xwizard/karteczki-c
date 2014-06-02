@@ -19,3 +19,7 @@
 *.exe
 *.out
 *.app
+
+# C::B output
+bin/
+obj/
