@@ -3,8 +3,8 @@
 
 #define IDLEN 15
 
-typedef char id[IDLEN];
+typedef char id_t[IDLEN];
 
-
+void new_id(id_t id);
 
 #endif // ID_H
