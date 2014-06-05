@@ -4,10 +4,14 @@
 #include <glib.h>
 #include "id.h"
 
+#define POCKETS 5
+
 typedef struct Box {
-    id_t id;
-    GList* pockets[5];
+    char* id;
+    GList* pockets[POCKETS];
 } Box;
+
+Box* box_new();
 
 #endif // BOX_H
 

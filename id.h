@@ -1,6 +1,8 @@
 #ifndef ID_H
 #define ID_H
 
-typedef unsigned long id_t;
+#define IDLEN 21
+
+char* id_new();
 
 #endif // ID_H

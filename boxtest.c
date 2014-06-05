@@ -8,5 +8,5 @@ void box_test() {
 
 
 
-    printf("box.c tests finished!\n");
+    printf("box.c tests passed!\n");
 }
