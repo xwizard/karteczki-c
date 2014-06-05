@@ -41,14 +41,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="boxtest.h" />
-		<Unit filename="id.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="id.h" />
-		<Unit filename="idtest.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="idtest.h" />
 		<Unit filename="karteczkitest.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -56,6 +49,9 @@
 			<envvars />
 			<code_completion />
 			<debugger />
+			<lib_finder>
+				<lib name="glib-2.0" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
