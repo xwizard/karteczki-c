@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/xwizard/karteczki/box"
 	"github.com/xwizard/karteczki/events"
-	"github.com/xwizard/karteczki/quiz"
 )
 
 func main() {
@@ -19,8 +19,8 @@ func main() {
 		}
 	}
 
-	var quiz quiz.Quiz
-	fmt.Println(quiz)
+	box := box.NewBox()
+	fmt.Println(box)
 	events.Emitter.On(events.CardCorrect, hello).
 		On(events.CardIncorrect, count).
 		Emit(events.CardCorrect, "world").

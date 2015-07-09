@@ -8,6 +8,7 @@ type EventType int
 const (
 	CardCorrect EventType = iota
 	CardIncorrect
+	cardPromoted
 )
 
 var Emitter = emission.NewEmitter()
