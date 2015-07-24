@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>gtest</name>
+	<name>core-test</name>
 	<comment></comment>
 	<projects>
+		<project>core</project>
+		<project>gtest</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
