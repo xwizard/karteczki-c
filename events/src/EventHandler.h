@@ -8,13 +8,17 @@
 #ifndef SRC_EVENTHANDLER_H_
 #define SRC_EVENTHANDLER_H_
 
+#include <vector>
+
 namespace events {
 
-template <class event>
+using namespace std;
+
+template <class Event>
 class EventHandler {
 public:
 	virtual ~EventHandler();
-	EventHandler();
+	virtual void handle(Event);
 };
 
 } /* namespace events */
