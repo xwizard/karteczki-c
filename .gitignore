@@ -4,3 +4,4 @@ Release/
 *.exe
 *.a
 .tup/
+.tags*

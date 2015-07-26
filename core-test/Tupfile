@@ -2,3 +2,4 @@ include_rules
 
 : foreach *.cpp |> !c++ |> %B.o
 : *.o ../gtest/libgtest.a ../core/libcore.a |> g++ %f -o %o |> core-test.exe
+: core-test.exe |> ./core-test.exe |>
