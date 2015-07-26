@@ -1,0 +1,6 @@
+CFLAGS += -Wall
+CFLAGS += -O2
+CFLAGS += -I$(TUP_CWD)
+
+!c++ = |> g++ $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ar crs %o %f |>

@@ -1,4 +1,4 @@
 include_rules
 
 : foreach *.cpp |> !c++ |> %B.o
-: *.o |> !ar |> libgtest.a
+: *.o |> !ar |> libcore.a

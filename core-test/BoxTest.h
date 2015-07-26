@@ -8,7 +8,7 @@
 #ifndef BOXTEST_H_
 #define BOXTEST_H_
 
-#include <gtest.h>
+#include <gtest/gtest.h>
 
 namespace core {
 
