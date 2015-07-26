@@ -2,4 +2,5 @@ Debug/
 Release/
 *.o
 *.exe
+*.a
 .tup/
