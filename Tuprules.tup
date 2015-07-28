@@ -1,6 +1,7 @@
 CFLAGS += -Wall
 CFLAGS += -O2
 CFLAGS += -I$(TUP_CWD)
+CFLAGS += -std=c++0x
 
 !c++ = |> g++ $(CFLAGS) -c %f -o %o |> %B.o
 !ar = |> ar crs %o %f |>

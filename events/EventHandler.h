@@ -1,14 +1,5 @@
-/*
- * EventHandler.h
- *
- *  Created on: 24 lip 2015
- *      Author: Mateusz
- */
-
 #ifndef SRC_EVENTHANDLER_H_
 #define SRC_EVENTHANDLER_H_
-
-#include <vector>
 
 namespace events {
 
@@ -18,8 +9,10 @@ template <class Event>
 class EventHandler {
 public:
 	virtual ~EventHandler();
-	virtual void handle(Event);
+	virtual void handle(Event event);
 };
+
+
 
 } /* namespace events */
 

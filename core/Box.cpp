@@ -1,3 +1,4 @@
+#include <events/DomainEvents.h>
 #include "Box.h"
 
 namespace core {
