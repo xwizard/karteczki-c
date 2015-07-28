@@ -5,3 +5,4 @@ Release/
 *.a
 .tup/
 .tags*
+/Default/

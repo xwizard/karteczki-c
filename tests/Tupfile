@@ -1,0 +1,5 @@
+include_rules
+
+: foreach *.cpp |> !c++ |> %B.o
+: *.o ../gtest/*.o ../core/*.o ../core-test/*.o |> g++ %f -o %o |> test.exe
+: test.exe |> ./test.exe |>
