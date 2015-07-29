@@ -12,7 +12,8 @@ public:
 	virtual void handle(Event event);
 };
 
-
+template <class Event>
+EventHandler<Event>::~EventHandler() {}
 
 } /* namespace events */
 

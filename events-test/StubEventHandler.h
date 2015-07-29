@@ -17,6 +17,9 @@ private:
 };
 
 template<class Event>
+StubEventHandler<Event>::~StubEventHandler() {}
+
+template<class Event>
 void StubEventHandler<Event>::handle(Event event) {
 	events.push_back(event);
 }
