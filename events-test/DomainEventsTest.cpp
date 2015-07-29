@@ -19,8 +19,29 @@ void DomainEventsTest::SetUp() {
 	DomainEvents<int>::registerHandler(intEventHandler);
 }
 
-TEST_F(DomainEventsTest, DomainEventsHandleStringEvent) {
-	DomainEvents<string>::raise("dupa");
+void DomainEventsTest::TearDown() {
+	stringHandler->clearHandledEvents();
+	intEventHandler->clearHandledEvents();
+}
+
+TEST_F(DomainEventsTest, DomainEventsHandleEvents) {
+	DomainEvents<string>::raise("event");
 	EXPECT_EQ(1, stringHandler->countHandledEvents());
 	EXPECT_EQ(0, intEventHandler->countHandledEvents());
+
+	DomainEvents<string>::raise("other event");
+	EXPECT_EQ(2, stringHandler->countHandledEvents());
+	EXPECT_EQ(0, intEventHandler->countHandledEvents());
+}
+
+TEST_F(DomainEventsTest, DomainEventsTwoHandlersSameEvent) {
+	shared_ptr<StubEventHandler<string>> handler1 = make_shared<StubEventHandler<string>>();
+	shared_ptr<StubEventHandler<string>> handler2 = make_shared<StubEventHandler<string>>();
+	DomainEvents<string>::registerHandler(handler1);
+	DomainEvents<string>::registerHandler(handler2);
+
+	DomainEvents<string>::raise("event");
+
+	EXPECT_EQ(1, handler1->countHandledEvents());
+	EXPECT_EQ(1, handler2-> countHandledEvents());
 }

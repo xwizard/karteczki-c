@@ -14,7 +14,6 @@ class DomainEvents {
 public:
 	static void raise(Event event);
 	static void registerHandler(shared_ptr<EventHandler<Event>> eventHandler);
-	static void unregisterHandlers();
 private:
 	static vector<shared_ptr<EventHandler<Event>>> eventHandlers;
 };
@@ -32,11 +31,6 @@ void DomainEvents<Event>::raise(Event event) {
 template<class Event>
 void DomainEvents<Event>::registerHandler(shared_ptr<EventHandler<Event>> eventHandler) {
 	eventHandlers.push_back(eventHandler);
-}
-
-template<class Event>
-void DomainEvents<Event>::unregisterHandlers() {
-	eventHandlers.clear();
 }
 
 } /* namespace events */

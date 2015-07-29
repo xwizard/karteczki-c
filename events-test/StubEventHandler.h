@@ -12,6 +12,7 @@ public:
 	virtual ~StubEventHandler();
 	virtual void handle(Event event);
 	int countHandledEvents();
+	virtual void clearHandledEvents();
 private:
 	vector<Event> events;
 };
@@ -27,6 +28,11 @@ void StubEventHandler<Event>::handle(Event event) {
 template<class Event>
 int StubEventHandler<Event>::countHandledEvents() {
 	return events.size();
+}
+
+template<class Event>
+void StubEventHandler<Event>::clearHandledEvents() {
+	events.clear();
 }
 
 #endif /* EVENTS_TEST_STUBEVENTHANDLER_H_ */
