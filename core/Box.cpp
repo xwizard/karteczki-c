@@ -4,12 +4,13 @@
 namespace core {
 
 Box::Box() {
-	// TODO Auto-generated constructor stub
-
+	id = id::Id::random();
 }
 
-Box::~Box() {
-	// TODO Auto-generated destructor stub
+Box::Box(shared_ptr<id::Id> id) {
+	this->id = id;
 }
+
+Box::~Box() {}
 
 } /* namespace core */
