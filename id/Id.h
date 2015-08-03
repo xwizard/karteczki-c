@@ -2,6 +2,7 @@
 #define ID_H
 
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -9,8 +10,8 @@ namespace id {
 
 class Id {
 public:
-  static Id random();
-  static Id fromString(string str);
+  static shared_ptr<Id> random();
+  static shared_ptr<Id> fromString(string str);
   string value();
   virtual ~Id();
   bool operator==(const Id& id);

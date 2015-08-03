@@ -26,7 +26,7 @@ bool Id::operator!=(const Id& id) {
   return value_ != id.value_;
 }
 
-Id Id::random() {
+shared_ptr<Id> Id::random() {
   // http://stackoverflow.com/questions/440133/how-do-i-create-a-random-alpha-numeric-string-in-c
   char s[len];
   for (int i = 0; i < len; ++i) {
@@ -34,11 +34,11 @@ Id Id::random() {
   }
 
   s[len - 1] = 0;
-  return Id(string(s));
+  return shared_ptr<Id>(new Id(string(s)));
 }
 
-Id Id::fromString(string str) {
-  return Id(str);
+shared_ptr<Id> Id::fromString(string str) {
+  return shared_ptr<Id>(new Id(str));
 }
 
 string Id::value() {
