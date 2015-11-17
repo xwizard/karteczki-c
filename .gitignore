@@ -6,3 +6,4 @@ Release/
 .tup/
 .tags*
 /Default/
+build/
