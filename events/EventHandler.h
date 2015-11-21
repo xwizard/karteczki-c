@@ -9,7 +9,7 @@ template <class Event>
 class EventHandler {
 public:
 	virtual ~EventHandler();
-	virtual void handle(Event event);
+	virtual void handle(Event event) = 0;
 };
 
 template <class Event>
