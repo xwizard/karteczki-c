@@ -1,13 +1,15 @@
 #include <events/DomainEvents.h>
 #include "Box.h"
 
+using namespace id;
+
 namespace core {
 
 Box::Box() {
-	id = id::Id::random();
+	id = Id::random();
 }
 
-Box::Box(shared_ptr<id::Id> id) {
+Box::Box(shared_ptr<Id> id) {
 	this->id = id;
 }
 

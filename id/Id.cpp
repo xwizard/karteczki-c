@@ -1,6 +1,8 @@
 #include <cstdlib>
 #include "Id.h"
 
+using namespace std;
+
 namespace id {
 
 Id::Id() {}

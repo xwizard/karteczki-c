@@ -4,22 +4,20 @@
 #include <string>
 #include <memory>
 
-using namespace std;
-
 namespace id {
 
 class Id {
 public:
-  static shared_ptr<Id> random();
-  static shared_ptr<Id> fromString(string str);
-  string value();
+  static std::shared_ptr<Id> random();
+  static std::shared_ptr<Id> fromString(std::string str);
+  std::string value();
   virtual ~Id();
   bool operator==(const Id& id);
   bool operator!=(const Id& id);
 private:
   Id();
-  Id(const string str);
-  string value_ = "";
+  Id(const std::string str);
+  std::string value_ = "";
   static const char alphanum[];
   static const int len;
 };

@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory>
 
+using namespace std;
+
 namespace id {
 
 IdTest::IdTest() {}

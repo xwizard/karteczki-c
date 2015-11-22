@@ -3,8 +3,6 @@
 
 namespace events {
 
-using namespace std;
-
 template <class Event>
 class EventHandler {
 public:

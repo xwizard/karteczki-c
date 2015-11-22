@@ -5,21 +5,19 @@
 #include <memory>
 #include "EventHandler.h"
 
-using namespace std;
-
 namespace events {
 
 template<class Event>
 class DomainEvents {
 public:
 	static void raise(Event event);
-	static void registerHandler(shared_ptr<EventHandler<Event>> eventHandler);
+	static void registerHandler(std::shared_ptr<EventHandler<Event>> eventHandler);
 private:
-	static vector<shared_ptr<EventHandler<Event>>> eventHandlers;
+	static std::vector<std::shared_ptr<EventHandler<Event>>> eventHandlers;
 };
 
 template<class Event>
-vector<shared_ptr<EventHandler<Event>>> DomainEvents<Event>::eventHandlers;
+std::vector<std::shared_ptr<EventHandler<Event>>> DomainEvents<Event>::eventHandlers;
 
 template<class Event>
 void DomainEvents<Event>::raise(Event event) {
@@ -29,7 +27,7 @@ void DomainEvents<Event>::raise(Event event) {
 }
 
 template<class Event>
-void DomainEvents<Event>::registerHandler(shared_ptr<EventHandler<Event>> eventHandler) {
+void DomainEvents<Event>::registerHandler(std::shared_ptr<EventHandler<Event>> eventHandler) {
 	eventHandlers.push_back(eventHandler);
 }
 
