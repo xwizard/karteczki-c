@@ -35,13 +35,13 @@ TEST_F(DomainEventsTest, DomainEventsHandleEvents) {
 }
 
 TEST_F(DomainEventsTest, DomainEventsTwoHandlersSameEvent) {
-	shared_ptr<StubEventHandler<string>> handler1 = make_shared<StubEventHandler<string>>();
-	shared_ptr<StubEventHandler<string>> handler2 = make_shared<StubEventHandler<string>>();
-	DomainEvents<string>::registerHandler(handler1);
-	DomainEvents<string>::registerHandler(handler2);
+  shared_ptr<StubEventHandler<string>> handler1 = make_shared<StubEventHandler<string>>();
+  shared_ptr<StubEventHandler<string>> handler2 = make_shared<StubEventHandler<string>>();
+  DomainEvents<string>::registerHandler(handler1);
+  DomainEvents<string>::registerHandler(handler2);
 
-	DomainEvents<string>::raise("event");
+  DomainEvents<string>::raise("event");
 
-	EXPECT_EQ(1, handler1->countHandledEvents());
-	EXPECT_EQ(1, handler2-> countHandledEvents());
+  EXPECT_EQ(1, handler1->countHandledEvents());
+  EXPECT_EQ(1, handler2->countHandledEvents());
 }
