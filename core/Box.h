@@ -5,18 +5,19 @@
 #include <vector>
 #include <id/Id.h>
 
-using namespace std;
-
 namespace core {
 
 class Box {
 public:
 	Box();
-	Box(shared_ptr<id::Id> id);
+	Box(std::shared_ptr<id::Id> id);
 	virtual ~Box();
+  void addCard(std::shared_ptr<id::Id> cardId);
+  bool containsCard(unsigned int compartmentNumber, std::shared_ptr<id::Id> cardId);
 private:
-	shared_ptr<id::Id> id;
-	vector<vector<shared_ptr<id::Id>>> compartments;
+	std::shared_ptr<id::Id> id;
+	std::vector<std::vector<std::shared_ptr<id::Id>>> compartments;
+  static const unsigned int COMPARTMENT_AMOUNT;
 };
 
 } /* namespace core */

@@ -1,5 +1,7 @@
 #include "BoxTest.h"
 
+using namespace id;
+
 namespace core {
 
 BoxTest::BoxTest() {
@@ -10,8 +12,19 @@ BoxTest::~BoxTest() {
 	// TODO Auto-generated destructor stub
 }
 
-TEST_F(BoxTest, SomeRandomTest) {
-  EXPECT_EQ(true, true);
+void BoxTest::SetUp() {
+  box = new Box();
+}
+
+void BoxTest::TearDown() {
+  delete box;
+}
+
+TEST_F(BoxTest, BoxShouldHaveCardAferAddCard) {
+  box->addCard(Id::fromString("1"));
+  
+  ASSERT_TRUE(box->containsCard(0, Id::fromString("")));
+  ASSERT_FALSE(box->containsCard(1, Id::fromString("")));
 }
 
 
