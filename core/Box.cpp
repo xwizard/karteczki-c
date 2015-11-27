@@ -22,12 +22,12 @@ Box::Box(shared_ptr<Id> id) {
 Box::~Box() {}
 
 void Box::addCard(shared_ptr<Id> cardId) {
-
+	compartments[0].push_back(cardId);
 }
 
-bool Box::containsCard(unsigned int compartmentNumber, std::shared_ptr<Id> cardId)
-{
-  return find(compartments[compartmentNumber].begin(), compartments[compartmentNumber].end(), cardId) != compartments[compartmentNumber].end();
+bool Box::containsCard(unsigned int compartmentNumber, std::shared_ptr<Id> cardId) {
+  return find_if(compartments[compartmentNumber].begin(), compartments[compartmentNumber].end(),
+  [&](shared_ptr<Id> const &e){ return *e == *cardId; }) != compartments[compartmentNumber].end();
 }
 
 } /* namespace core */
