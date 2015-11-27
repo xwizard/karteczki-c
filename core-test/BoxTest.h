@@ -6,14 +6,14 @@
 
 namespace core {
 
-class BoxTest : public ::testing::Test {
+class BoxTest: public ::testing::Test {
 public:
-	BoxTest();
-	virtual ~BoxTest();
+  BoxTest();
+  virtual ~BoxTest();
   virtual void TearDown();
   virtual void SetUp();
 protected:
-	Box* box;
+  Box* box;
 };
 
 } /* namespace core */

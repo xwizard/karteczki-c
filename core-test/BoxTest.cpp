@@ -5,11 +5,11 @@ using namespace id;
 namespace core {
 
 BoxTest::BoxTest() {
-	// TODO Auto-generated constructor stub
+  // TODO Auto-generated constructor stub
 }
 
 BoxTest::~BoxTest() {
-	// TODO Auto-generated destructor stub
+  // TODO Auto-generated destructor stub
 }
 
 void BoxTest::SetUp() {
@@ -22,9 +22,9 @@ void BoxTest::TearDown() {
 
 TEST_F(BoxTest, BoxShouldHaveCardAferAddCard) {
   box->addCard(Id::fromString("1"));
-  
-  ASSERT_TRUE(box->containsCard(0, Id::fromString("")));
-  ASSERT_FALSE(box->containsCard(1, Id::fromString("")));
+
+  ASSERT_TRUE(box->containsCard(0, Id::fromString("1")));
+  ASSERT_FALSE(box->containsCard(1, Id::fromString("1")));
 }
 
 
