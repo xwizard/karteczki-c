@@ -8,8 +8,10 @@ using namespace std;
 
 namespace id {
 
-IdTest::IdTest() {}
-IdTest::~IdTest() {}
+IdTest::IdTest() {
+}
+IdTest::~IdTest() {
+}
 
 TEST_F(IdTest, FromStringSetsProperValue) {
   shared_ptr<Id> id = Id::fromString("test");

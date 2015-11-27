@@ -5,13 +5,13 @@
 #include <gtest/gtest.h>
 #include "StubEventHandler.h"
 
-class DomainEventsTest : public ::testing::Test {
+class DomainEventsTest: public ::testing::Test {
 public:
-	DomainEventsTest();
-	~DomainEventsTest();
+  DomainEventsTest();
+  ~DomainEventsTest();
 protected:
-	shared_ptr<StubEventHandler<string>> stringHandler;
-	shared_ptr<StubEventHandler<int>> intEventHandler;
+  shared_ptr<StubEventHandler<string>> stringHandler;
+  shared_ptr<StubEventHandler<int>> intEventHandler;
   virtual void SetUp();
   virtual void TearDown();
 };

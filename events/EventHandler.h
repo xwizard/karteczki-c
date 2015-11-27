@@ -3,15 +3,16 @@
 
 namespace events {
 
-template <class Event>
+template<class Event>
 class EventHandler {
 public:
-	virtual ~EventHandler();
-	virtual void handle(Event event) = 0;
+  virtual ~EventHandler();
+  virtual void handle(Event event) = 0;
 };
 
-template <class Event>
-EventHandler<Event>::~EventHandler() {}
+template<class Event>
+EventHandler<Event>::~EventHandler() {
+}
 
 } /* namespace events */
 

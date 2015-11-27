@@ -5,14 +5,15 @@ using namespace std;
 
 namespace id {
 
-Id::Id() {}
+Id::Id() {
+}
 
-Id::~Id() {}
+Id::~Id() {
+}
 
-const char Id::alphanum[] =
-  "0123456789"
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  "abcdefghijklmnopqrstuvwxyz";
+const char Id::alphanum[] = "0123456789"
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    "abcdefghijklmnopqrstuvwxyz";
 
 const int Id::len = 16;
 

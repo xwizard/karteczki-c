@@ -9,7 +9,9 @@ namespace core {
 
 const unsigned int Box::COMPARTMENT_AMOUNT = 5;
 
-Box::Box() : Box(Id::random()) {}
+Box::Box() :
+    Box(Id::random()) {
+}
 
 Box::Box(shared_ptr<Id> id) {
   this->id = id;
@@ -19,17 +21,18 @@ Box::Box(shared_ptr<Id> id) {
   }
 }
 
-Box::~Box() {}
+Box::~Box() {
+}
 
 void Box::addCard(shared_ptr<Id> cardId) {
-	compartments[0].push_back(cardId);
+  compartments[0].push_back(cardId);
 }
 
 bool Box::containsCard(unsigned int compartmentNumber, shared_ptr<Id> cardId) {
-  return find_if(compartments[compartmentNumber].begin(), compartments[compartmentNumber].end(),
-    [&](shared_ptr<Id> const &e){
+  return find_if(compartments[compartmentNumber].begin(),
+      compartments[compartmentNumber].end(), [&](shared_ptr<Id> const &e) {
         return *e == *cardId;
-    }) != compartments[compartmentNumber].end();
+      }) != compartments[compartmentNumber].end();
 }
 
 } /* namespace core */

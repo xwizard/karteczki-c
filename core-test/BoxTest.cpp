@@ -27,5 +27,4 @@ TEST_F(BoxTest, BoxShouldHaveCardAferAddCard) {
   ASSERT_FALSE(box->containsCard(1, Id::fromString("1")));
 }
 
-
 } /* namespace core */
