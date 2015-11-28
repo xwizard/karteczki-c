@@ -25,6 +25,9 @@ Box::~Box() {
 }
 
 void Box::addCard(shared_ptr<Id> cardId) {
+  if (cardId == nullptr)
+    throw invalid_argument("cardId cannot be NULL.");
+
   compartments[0].push_back(cardId);
 }
 

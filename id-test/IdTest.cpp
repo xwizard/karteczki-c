@@ -19,7 +19,7 @@ TEST_F(IdTest, FromStringSetsProperValue) {
 }
 
 TEST_F(IdTest, RandomIdIsRandomEnough) {
-  const int times = 5000;
+  const int times = 3000;
   vector<shared_ptr<Id>> ids;
 
   for (int i = 0; i < times; i++) {

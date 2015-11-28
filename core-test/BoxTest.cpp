@@ -1,6 +1,8 @@
+#include <stdexcept>
 #include "BoxTest.h"
 
 using namespace id;
+using namespace std;
 
 namespace core {
 
@@ -25,6 +27,10 @@ TEST_F(BoxTest, BoxShouldHaveCardAferAddCard) {
 
   ASSERT_TRUE(box->containsCard(0, Id::fromString("1")));
   ASSERT_FALSE(box->containsCard(1, Id::fromString("1")));
+}
+
+TEST_F(BoxTest, BoxShouldThrowInvalidExceptionWhenAddingNullCardId) {
+  ASSERT_THROW(box->addCard(shared_ptr<Id>(NULL)), invalid_argument);
 }
 
 } /* namespace core */
