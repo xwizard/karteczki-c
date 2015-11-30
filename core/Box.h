@@ -19,10 +19,10 @@ public:
   void degradeCard(std::shared_ptr<id::Id> cardId);
 private:
   std::shared_ptr<id::Id> id;
-  std::vector<std::vector<std::shared_ptr<id::Id>>>compartments;
+  std::vector<std::shared_ptr<std::vector<std::shared_ptr<id::Id>>>> compartments;
   static const unsigned int COMPARTMENT_AMOUNT;
   void assertCorrectCompartment(const unsigned int compartment);
-  signed int findCard(std::shared_ptr<id::Id> cardId);
+  signed int findCompartmentContaining(std::shared_ptr<id::Id> cardId);
 };
 
 }

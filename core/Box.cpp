@@ -17,7 +17,7 @@ Box::Box(shared_ptr<Id> id) {
   this->id = id;
 
   for (unsigned int i = 0; i < Box::COMPARTMENT_AMOUNT; i++) {
-    compartments.push_back(vector<shared_ptr<Id>>());
+    compartments.push_back(shared_ptr<vector<shared_ptr<Id>>>(new vector<shared_ptr<Id>>()));
   }
 }
 
@@ -33,36 +33,36 @@ void Box::addCard(shared_ptr<Id> cardId) {
 void Box::addCard(const unsigned int compartment, std::shared_ptr<id::Id> cardId) {
   assertCorrectCompartment(compartment);
 
-  compartments[compartment].push_back(cardId);
+  compartments[compartment]->push_back(cardId);
 }
 
 bool Box::containsCard(unsigned int compartmentNumber, shared_ptr<Id> cardId) {
   assertCorrectCompartment(compartmentNumber);
 
-  return find_if(compartments[compartmentNumber].begin(),
-    compartments[compartmentNumber].end(), [&](shared_ptr<Id> const &e) {
+  return find_if(compartments[compartmentNumber]->begin(),
+    compartments[compartmentNumber]->end(), [&](auto &e) {
     return *e == *cardId;
-  }) != compartments[compartmentNumber].end();
+  }) != compartments[compartmentNumber]->end();
 }
 
 void Box::degradeCard(std::shared_ptr<id::Id> cardId) {
-  unsigned int compartmentNum = (unsigned int)findCard(cardId);
-  vector<shared_ptr<Id>> compartment = compartments[compartmentNum];
+  unsigned int compartmentNum = (unsigned int)findCompartmentContaining(cardId);
+  auto compartment = compartments[compartmentNum];
   
-  vector<shared_ptr<Id>>::iterator position = find_if(compartment.begin(),
-    compartment.end(), [&](shared_ptr<Id> const &e) {
+  auto position = find_if(compartment->begin(),
+    compartment->end(), [&](shared_ptr<Id> const &e) {
     return *e == *cardId;
   });
 
-  compartment.erase(position);
-  compartments[0].push_back(cardId);
+  compartment->erase(position);
+  compartments[0]->push_back(cardId);
 }
 
 void Box::assertCorrectCompartment(const unsigned int compartment) {
   if (compartment > COMPARTMENT_AMOUNT) throw invalid_argument("compartmentNumber cannot be greater than " + COMPARTMENT_AMOUNT);
 }
 
-int Box::findCard(std::shared_ptr<id::Id> cardId) {
+int Box::findCompartmentContaining(std::shared_ptr<id::Id> cardId) {
   for (unsigned int i = 0; i < COMPARTMENT_AMOUNT; i++) {
     if (containsCard(i, cardId)) {
       return (int)i;
