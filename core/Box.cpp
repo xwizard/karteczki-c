@@ -30,7 +30,7 @@ void Box::addCard(shared_ptr<Id> cardId) {
   addCard(0, cardId);
 }
 
-void Box::addCard(const unsigned int compartment, std::shared_ptr<id::Id> cardId) {
+void Box::addCard(const unsigned int compartment, std::shared_ptr<Id> cardId) {
   assertCorrectCompartment(compartment);
 
   compartments[compartment]->push_back(cardId);
@@ -45,17 +45,21 @@ bool Box::containsCard(unsigned int compartmentNumber, shared_ptr<Id> cardId) {
   }) != compartments[compartmentNumber]->end();
 }
 
-void Box::degradeCard(std::shared_ptr<id::Id> cardId) {
+void Box::degradeCard(shared_ptr<Id> cardId) {
   unsigned int compartmentNum = (unsigned int)findCompartmentContaining(cardId);
   auto compartment = compartments[compartmentNum];
   
-  auto position = find_if(compartment->begin(),
-    compartment->end(), [&](shared_ptr<Id> const &e) {
-    return *e == *cardId;
-  });
+  auto position = findCard(compartmentNum, cardId);
 
   compartment->erase(position);
   compartments[0]->push_back(cardId);
+}
+
+vector<shared_ptr<Id>>::iterator Box::findCard(unsigned int compartmentNumber, shared_ptr<Id> cardId) {
+  return find_if(compartments[compartmentNumber]->begin(),
+    compartments[compartmentNumber]->end(), [&](shared_ptr<Id> const &e) {
+    return *e == *cardId;
+  });
 }
 
 void Box::assertCorrectCompartment(const unsigned int compartment) {
