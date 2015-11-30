@@ -10,7 +10,7 @@ namespace core {
 const unsigned int Box::COMPARTMENT_AMOUNT = 5;
 
 Box::Box() :
-    Box(Id::random()) {
+  Box(Id::random()) {
 }
 
 Box::Box(shared_ptr<Id> id) {
@@ -25,17 +25,50 @@ Box::~Box() {
 }
 
 void Box::addCard(shared_ptr<Id> cardId) {
-  if (cardId == nullptr)
-    throw invalid_argument("cardId cannot be NULL.");
+  if (cardId == nullptr) throw invalid_argument("cardId cannot be NULL.");
 
-  compartments[0].push_back(cardId);
+  addCard(0, cardId);
+}
+
+void Box::addCard(const unsigned int compartment, std::shared_ptr<id::Id> cardId) {
+  assertCorrectCompartment(compartment);
+
+  compartments[compartment].push_back(cardId);
 }
 
 bool Box::containsCard(unsigned int compartmentNumber, shared_ptr<Id> cardId) {
+  assertCorrectCompartment(compartmentNumber);
+
   return find_if(compartments[compartmentNumber].begin(),
-      compartments[compartmentNumber].end(), [&](shared_ptr<Id> const &e) {
-        return *e == *cardId;
-      }) != compartments[compartmentNumber].end();
+    compartments[compartmentNumber].end(), [&](shared_ptr<Id> const &e) {
+    return *e == *cardId;
+  }) != compartments[compartmentNumber].end();
+}
+
+void Box::degradeCard(std::shared_ptr<id::Id> cardId) {
+  unsigned int compartmentNum = (unsigned int)findCard(cardId);
+  vector<shared_ptr<Id>> compartment = compartments[compartmentNum];
+  
+  vector<shared_ptr<Id>>::iterator position = find_if(compartment.begin(),
+    compartment.end(), [&](shared_ptr<Id> const &e) {
+    return *e == *cardId;
+  });
+
+  compartment.erase(position);
+  compartments[0].push_back(cardId);
+}
+
+void Box::assertCorrectCompartment(const unsigned int compartment) {
+  if (compartment > COMPARTMENT_AMOUNT) throw invalid_argument("compartmentNumber cannot be greater than " + COMPARTMENT_AMOUNT);
+}
+
+int Box::findCard(std::shared_ptr<id::Id> cardId) {
+  for (unsigned int i = 0; i < COMPARTMENT_AMOUNT; i++) {
+    if (containsCard(i, cardId)) {
+      return (int)i;
+    }
+  }
+  return -1;
 }
 
 } /* namespace core */
