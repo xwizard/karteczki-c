@@ -55,6 +55,24 @@ TEST_F(BoxTest, BoxShouldDegradeCardToFristCompartment) {
   box->degradeCard(Id::fromString("0"));
 
   ASSERT_TRUE(box->containsCard(0, Id::fromString("0")));
+  ASSERT_FALSE(box->containsCard(1, Id::fromString("0")));
+}
+
+TEST_F(BoxTest, BoxShouldThrowInvalidExceptionWhenDegradingNullCardId) {
+  ASSERT_THROW(box->degradeCard(shared_ptr<Id>(NULL)), invalid_argument);
+}
+
+TEST_F(BoxTest, BoxShouldThrowInvalidExceptionWhenDegradingNotExistingCard) {
+  ASSERT_THROW(box->degradeCard(Id::random()), invalid_argument);
+}
+
+TEST_F(BoxTest, BoxShouldAdvanceCardToNextCompartment) {
+  box->addCard(1, Id::fromString("0"));
+
+  box->advanceCard(Id::fromString("0"));
+
+  ASSERT_FALSE(box->containsCard(1, Id::fromString("0")));
+  ASSERT_TRUE(box->containsCard(2, Id::fromString("0")));
 }
 
 } /* namespace core */

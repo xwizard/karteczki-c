@@ -13,15 +13,17 @@ public:
   Box(std::shared_ptr<id::Id> id);
   virtual ~Box();
   void addCard(std::shared_ptr<id::Id> cardId);
-  void addCard(const unsigned int compartment, std::shared_ptr<id::Id> cardId);
-  bool containsCard(unsigned int compartmentNumber, std::shared_ptr<id::Id> cardId);
+  void addCard(const int compartment, std::shared_ptr<id::Id> cardId);
+  bool containsCard(int compartmentNumber, std::shared_ptr<id::Id> cardId);
   void degradeCard(std::shared_ptr<id::Id> cardId);
-  std::vector<std::shared_ptr<id::Id>>::iterator findCard(unsigned int compartmentNumber, std::shared_ptr<id::Id> cardId);
+  std::vector<std::shared_ptr<id::Id>>::iterator findCard(int compartmentNumber, std::shared_ptr<id::Id> cardId);
+  void advanceCard(std::shared_ptr<id::Id> cardId);
 private:
   std::shared_ptr<id::Id> id;
   std::vector<std::shared_ptr<std::vector<std::shared_ptr<id::Id>>>> compartments;
-  static const unsigned int COMPARTMENT_AMOUNT;
-  void assertCorrectCompartment(const unsigned int compartment);
+  static const int COMPARTMENT_AMOUNT;
+  void assertCorrectCompartment(const int compartment);
+  void assertCardIdNotNull(std::shared_ptr<id::Id> cardId);
   signed int findCompartmentContaining(std::shared_ptr<id::Id> cardId);
 };
 
